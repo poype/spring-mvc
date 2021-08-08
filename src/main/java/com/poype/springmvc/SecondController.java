@@ -1,10 +1,7 @@
 package com.poype.springmvc;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class SecondController {
@@ -33,5 +30,16 @@ public class SecondController {
         System.out.println("username: " + username);
         System.out.println("age: " + age);
         return "testRequestParam";
+    }
+
+    /**
+     * 使用 @CookieValue 将 cookie 的值映射给方法的参数
+     * 默认情况也是要求对应的 cookie 必须存在，可以用required属性将其设置为可选的
+     */
+    @ResponseBody
+    @RequestMapping("/test_cookie")
+    public String testCookieValue(@CookieValue(value = "JSESSIONID", required = false) String sessionId) {
+        System.out.println("sessionId: " + sessionId);
+        return "testCookieValue";
     }
 }
