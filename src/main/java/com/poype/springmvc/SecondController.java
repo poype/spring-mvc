@@ -4,6 +4,11 @@ import com.poype.springmvc.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.Writer;
+
 @Controller
 public class SecondController {
 
@@ -53,5 +58,29 @@ public class SecondController {
     public String testPojo(User user) {
         System.out.println(user);
         return "testPojo";
+    }
+
+
+    /**
+     * 使用 servlet 原生的 API 作为目标方法的参数， 具体支持以下类型
+     *
+     * HttpServletRequest
+     * HttpServletResponse
+     * HttpSession
+     * java.security.Principal
+     * Locale InputStream
+     * OutputStream
+     * Reader
+     * Writer
+     */
+    @RequestMapping("/test_servlet_api")
+    public void testServletAPI(HttpServletRequest request,
+                               HttpServletResponse response, Writer out) throws IOException {
+        System.out.println("request: " + request);
+        System.out.println("response: " + response);
+        System.out.println(response.getWriter() == out); // true
+
+        out.write("this response is written by native servlet API");
+        out.close();
     }
 }
