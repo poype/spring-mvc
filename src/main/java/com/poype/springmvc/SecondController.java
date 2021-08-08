@@ -1,5 +1,6 @@
 package com.poype.springmvc;
 
+import com.poype.springmvc.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,5 +42,16 @@ public class SecondController {
     public String testCookieValue(@CookieValue(value = "JSESSIONID", required = false) String sessionId) {
         System.out.println("sessionId: " + sessionId);
         return "testCookieValue";
+    }
+
+    /**
+     * http://localhost:8090/spring_mvc/test_pojo?username=poype&age=22&address.province=aaa&address.city=bbb
+     * 将参数映射成一个 POJO 对象，并且支持级联映射，注意级联参数的格式
+     */
+    @ResponseBody
+    @RequestMapping("/test_pojo")
+    public String testPojo(User user) {
+        System.out.println(user);
+        return "testPojo";
     }
 }
