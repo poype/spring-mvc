@@ -25,7 +25,7 @@ public class ThirdController {
         User user = new User();
         user.setUsername("Poype");
         user.setAge(22);
-        map.put("user", user);
+        map.put("abc", user);
     }
 
     /**
@@ -35,7 +35,7 @@ public class ThirdController {
      */
     @ResponseBody
     @RequestMapping("/testModelAttribute1")
-    public String testModelAttribute1(User user) {
+    public String testModelAttribute1(@ModelAttribute("abc") User user) {
         System.out.println("testModelAttribute1: " + user);
         return "testModelAttribute1";
     }
