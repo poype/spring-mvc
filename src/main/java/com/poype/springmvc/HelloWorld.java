@@ -33,4 +33,14 @@ public class HelloWorld {
         System.out.println("test get method");
         return "testGetMethod";
     }
+
+    /**
+     * 使用 param 进行路由，下面的接口要求必须存在参数username，且age参数不能等于10。
+     */
+    @ResponseBody
+    @RequestMapping(path = "/test_param", params = {"username", "age!=10"})
+    public String testParams() {
+        System.out.println("test params");
+        return "testParams";
+    }
 }
