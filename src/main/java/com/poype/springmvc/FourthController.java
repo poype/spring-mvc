@@ -21,4 +21,13 @@ public class FourthController {
         }
         return "testBind1";
     }
+
+    @ResponseBody
+    @RequestMapping("/testJson")
+    public User testJson() {
+        User user = new User();
+        user.setAge(22);
+        user.setUsername("Marco");
+        return user;
+    }
 }
