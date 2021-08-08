@@ -28,6 +28,11 @@ public class ThirdController {
         map.put("user", user);
     }
 
+    /**
+     * handler 方法接收的实际对象参数是 request参数和ModelAttribute方法放入map中对象参数的结合，request中的参数优先级更高
+     * 例如在调用 /testModelAttribute1 时在 URI 加上 ?age=99，则 testModelAttribute1 方法接收到的 user 对象是
+     * User{username='Poype', age=99, address=null}， 即 age 参数来自于request， username参数来源于 ModelAttribute 方法
+     */
     @ResponseBody
     @RequestMapping("/testModelAttribute1")
     public String testModelAttribute1(User user) {
