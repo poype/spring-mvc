@@ -11,4 +11,9 @@
 
     <!-- 开启注解校验需要添加这行代码 -->
     <mvc:annotation-driven/>
+
+    <!-- 配置interceptor -->
+    <mvc:interceptors>
+        <bean class="com.poype.springmvc.interceptor.FirstInterceptor"/>
+    </mvc:interceptors>
 </beans>
