@@ -15,5 +15,11 @@
     <!-- 配置interceptor -->
     <mvc:interceptors>
         <bean class="com.poype.springmvc.interceptor.FirstInterceptor"/>
+
+        <!-- 明确指定SecondInterceptor只作用于 /hello -->
+        <mvc:interceptor>
+            <mvc:mapping path="/hello"/>
+            <bean class="com.poype.springmvc.interceptor.SecondInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 </beans>
