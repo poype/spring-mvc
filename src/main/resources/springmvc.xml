@@ -9,4 +9,6 @@
 
     <context:component-scan base-package="com.poype.springmvc"/>
 
+    <!-- 开启注解校验需要添加这行代码 -->
+    <mvc:annotation-driven/>
 </beans>
