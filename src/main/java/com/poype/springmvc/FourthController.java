@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -43,8 +44,10 @@ public class FourthController {
 
     @ResponseBody
     @ExceptionHandler({ArithmeticException.class})
-    public String handleArithmeticException() {
-        System.out.println("handle ArithmeticException");
+    public String handleArithmeticException(Exception ex, HttpServletRequest request) {
+        System.out.println("handle ArithmeticException " + ex);
+        System.out.println(request.getParameter("test"));
+
         return "ArithmeticException is handled";
     }
 }
