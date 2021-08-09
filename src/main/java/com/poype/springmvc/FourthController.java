@@ -50,4 +50,12 @@ public class FourthController {
 
         return "ArithmeticException is handled";
     }
+
+    @ResponseBody
+    @ExceptionHandler({Exception.class})
+    public String handleException(Exception ex, HttpServletRequest request) {
+        System.out.println("handle Exception " + ex);
+
+        return "Exception is handled";
+    }
 }
